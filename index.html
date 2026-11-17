@@ -58,7 +58,18 @@ h1{font:600 clamp(44px,6.6vw,92px)/1.02 var(--f);margin:0 0 22px;letter-spacing:
 /* showreel */
 .reel{position:relative;aspect-ratio:16/9;border-radius:26px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#1c1840,#0b0b10 60%,#1d1330);cursor:pointer}
 .reel video,.reel iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
-.reel .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px}
+..reel .ph img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.reel .ph > div{
+  position:relative;
+  z-index:2;
+}
 .play{width:96px;height:96px;border-radius:50%;background:var(--ac);display:grid;place-items:center;margin:0 auto 16px;box-shadow:0 0 0 14px rgba(139,107,255,.18);transition:transform .3s}
 .reel:hover .play{transform:scale(1.1)}
 .play::after{content:"";border-left:24px solid #fff;border-top:15px solid transparent;border-bottom:15px solid transparent;margin-left:7px}
@@ -162,7 +173,15 @@ dialog.v{width:min(400px,92vw)}dialog.v #dv{aspect-ratio:9/16}
 
 <section id="showreel"><div class="wrap">
 <div class="head"><span class="pill">Showreel</span><h2>Watch the reel</h2><p class="sub">A quick look at my editing, pacing and motion work.</p></div>
-<div class="reel" id="reel" tabindex="0" role="button" aria-label="Play showreel"><div class="ph"><div><div class="play"></div><small>Placeholder. Set SHOWREEL_SRC in the script to your video.</small></div></div></div>
+<div class="reel" id="reel" tabindex="0" role="button" aria-label="Play showreel">
+  <div class="ph">
+    <img src="showreel-thumbnail.jpg" alt="Vijay Bokoliya Showreel">
+    <div>
+      <div class="play"></div>
+      <small>Click to play showreel</small>
+    </div>
+  </div>
+</div>
 </div></section>
 
 <section id="work"><div class="wrap">
