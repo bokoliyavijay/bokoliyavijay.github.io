@@ -251,7 +251,8 @@ const PROJECTS = [  // 5 vertical reels (1080x1920) then 2 landscape films (1920
  {t:"Kinetic Type",c:"Motion Graphics",d:"Animated text and graphics built in After Effects.",dur:"00:15",hue:170},
  {t:"Creative Cut",c:"Creative Editing",d:"A rhythm-driven edit with speed ramps, match cuts and music sync.",dur:"00:22",hue:330},
  {t:"Skyline Residences",c:"Real Estate Films",d:"A cinematic walkthrough of a luxury apartment tower with smooth camera moves and premium grading.",dur:"01:24",hue:255,w:1},
-{t:"Brand Launch Film",c:"Commercial Advertisements",d:"A cinematic brand film combining footage, 2D motion and bold typography.",dur:"01:05",hue:195,w:1,video:"Victory%20Headphone%20commercial%20ad.mp4",thumb:"Victory%20Headphones%20Thumbnail.jpg"}
+{t:"Brand Launch Film",c:"Commercial Advertisements",d:"A cinematic brand film combining footage, 2D motion and bold typography.",dur:"01:05",hue:195,w:1,video:"Victory%20Headphone%20commercial%20ad.mp4"}
+];
 const SERVICES=[["Professional Video Editing","Clean, well-paced cuts with color correction, sound design and delivery for any platform."],["Motion Graphics","Animated titles, lower thirds and logo stings built in After Effects to match your brand."],["Social Media Content","Vertical reels and shorts with strong hooks and captions, ready to post."],["Promotional Videos","Product, business and event promos that explain the offer fast."],["Creative Visual Storytelling","Concept-led edits that find the story in your footage."]];
 const STEPS=[["Content received","Share your footage and references through Google Drive or Dropbox."],["Edit & flow","I shape pacing, sound design and motion graphics around your story."],["Revisions","Review the cut and request changes until it feels right."],["Delivery","Final files exported in the formats your platforms need."]];
 const STATS=[["3","Adobe tools"],["4","AI tools"],["5","Services"],["5","Project categories"]];
@@ -270,7 +271,7 @@ reel.onclick=playReel;reel.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.prev
 // projects
 const cats=["All",...new Set(PROJECTS.map(p=>p.c))];
 $("#filters").innerHTML=cats.map((c,i)=>`<button class="${i?"":"on"}" data-c="${c}">${c}</button>`).join("");
-const card=(p,i)=>`<button class="card${p.w?" w":""}" data-i="${i}" data-c="${p.c}"><div class="th" style="${p.thumb?'background-image:url("'+p.thumb+'");background-size:cover;background-position:center;': 'background:'+hs(p.hue)}"></div><span class="chip a">${p.t}</span><span class="chip b">${p.c}</span><div class="bar"><i></i><span>${p.dur}</span><u></u></div></button>`;
+const card=(p,i)=>`<button class="card${p.w?" w":""}" data-i="${i}" data-c="${p.c}"><div class="th" style="background:${p.thumb?`url('${p.thumb}') center/cover no-repeat`:hs(p.hue)}"></div><span class="chip a">${p.t}</span><span class="chip b">${p.c}</span><div class="bar"><i></i><span>${p.dur}</span><u></u></div></button>`;
 $("#grid").innerHTML=PROJECTS.map((p,i)=>p.w?"":card(p,i)).join("");
 $("#grid2").innerHTML=PROJECTS.map((p,i)=>p.w?card(p,i):"").join("");
 $("#filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b));
